@@ -22,7 +22,7 @@ void Veiculo::setDisponivel(bool disp) { disponivel = disp; }
 void Veiculo::setLocalAtual(int local) { idLocalAtual = local; }
 
 void Veiculo::exibir() const {
-    std::cout << "Veículo: " << modelo << " (Placa: " << placa << ") - ";
-    std::cout << (disponivel ? "Disponível" : "Ocupado");
+    std::cout << "Veiculo: " << modelo << " (Placa: " << placa << ") - ";
+    std::cout << (disponivel ? "Disponivel" : "Ocupado");
     std::cout << " - Local atual ID: " << idLocalAtual;
 }

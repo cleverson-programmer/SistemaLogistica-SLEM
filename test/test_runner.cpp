@@ -11,6 +11,6 @@ int main() {
     testPersistenciaVeiculo();
     testPersistenciaPedido();
     
-    std::cout << "=== TESTES CONCLUÍDOS ===" << std::endl;
+    std::cout << "=== TESTES CONCLUIDOS ===" << std::endl;
     return 0;
 }

@@ -51,7 +51,7 @@ int main() {
                     std::cout << "Saindo do sistema...\n";
                     break;
                 default:
-                    std::cout << "Opção inválida!\n";
+                    std::cout << "Opcao invalida!\n";
             }
         } catch (const LogisticaException& e) {
             std::cerr << "Erro: " << e.what() << "\n";

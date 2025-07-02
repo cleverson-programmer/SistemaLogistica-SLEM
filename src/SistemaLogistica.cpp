@@ -12,11 +12,11 @@ std::map<int, int> pedidosEmRota;
 // Construtor
 SistemaLogistica::SistemaLogistica() : proximoIdPedido(1) {}
 
-// Métodos para Locais
+// Metodos para Locais
 void SistemaLogistica::adicionarLocal(const Local& local) {
     for (const auto& l : locais) {
         if (strcmp(l.getNome(), local.getNome()) == 0) {
-            throw LogisticaException("Local com este nome já existe");
+            throw LogisticaException("Local com este nome ja existe");
         }
     }
     locais.push_back(local);
@@ -24,7 +24,7 @@ void SistemaLogistica::adicionarLocal(const Local& local) {
 
 void SistemaLogistica::editarLocal(int id, const char* novoNome, float x, float y) {
     if (id < 0 || static_cast<size_t>(id) >= locais.size()) {
-        throw LogisticaException("ID de local inválido");
+        throw LogisticaException("ID de local invalido");
     }
     locais[id].setNome(novoNome);
     locais[id].setCoordenadas(x, y);
@@ -32,7 +32,7 @@ void SistemaLogistica::editarLocal(int id, const char* novoNome, float x, float 
 
 void SistemaLogistica::removerLocal(int id) {
     if (id < 0 || static_cast<size_t>(id) >= locais.size()) {
-        throw LogisticaException("ID de local inválido");
+        throw LogisticaException("ID de local invalido");
     }
     locais.erase(locais.begin() + id);
 }
@@ -49,11 +49,11 @@ void SistemaLogistica::listarLocais() const {
     }
 }
 
-// Métodos para Veículos
+// Métodos para Veiculos
 void SistemaLogistica::adicionarVeiculo(const Veiculo& veiculo) {
     for (const auto& v : veiculos) {
         if (strcmp(v.getPlaca(), veiculo.getPlaca()) == 0) {
-            throw LogisticaException("Veículo com esta placa já existe");
+            throw LogisticaException("Veiculo com esta placa ja existe");
         }
     }
     veiculos.push_back(veiculo);
@@ -61,11 +61,11 @@ void SistemaLogistica::adicionarVeiculo(const Veiculo& veiculo) {
 
 void SistemaLogistica::editarVeiculo(int id, const char* novaPlaca, const char* novoModelo, int novoLocal) {
     if (id < 0 || static_cast<size_t>(id) >= veiculos.size()) {
-        throw LogisticaException("ID de veículo inválido");
+        throw LogisticaException("ID de veiculo invalido");
     }
     for (size_t i = 0; i < veiculos.size(); ++i) {
         if (i != static_cast<size_t>(id) && strcmp(veiculos[i].getPlaca(), novaPlaca) == 0) {
-            throw LogisticaException("Placa já existe em outro veículo");
+            throw LogisticaException("Placa ja existe em outro veiculo");
         }
     }
     veiculos[id] = Veiculo(novaPlaca, novoModelo, novoLocal);
@@ -74,17 +74,17 @@ void SistemaLogistica::editarVeiculo(int id, const char* novaPlaca, const char* 
 
 void SistemaLogistica::removerVeiculo(int id) {
     if (id < 0 || static_cast<size_t>(id) >= veiculos.size()) {
-        throw LogisticaException("ID de veículo inválido");
+        throw LogisticaException("ID de veiculo invalido");
     }
     if (!veiculos[id].isDisponivel()) {
-        throw LogisticaException("Não é possível remover veículo em uso");
+        throw LogisticaException("Nao e possivel remover veiculo em uso");
     }
     veiculos.erase(veiculos.begin() + id);
 }
 
 void SistemaLogistica::listarVeiculos() const {
     if (veiculos.empty()) {
-        std::cout << "Nenhum veículo cadastrado.\n";
+        std::cout << "Nenhum veiculo cadastrado.\n";
         return;
     }
     for (size_t i = 0; i < veiculos.size(); ++i) {
@@ -94,48 +94,48 @@ void SistemaLogistica::listarVeiculos() const {
     }
 }
 
-// Métodos para Pedidos
+// Metodos para Pedidos
 void SistemaLogistica::adicionarPedido(int origem, int destino, float peso) {
     if (origem < 0 || static_cast<size_t>(origem) >= locais.size() || destino < 0 || static_cast<size_t>(destino) >= locais.size()) {
-        throw LogisticaException("Local de origem ou destino inválido");
+        throw LogisticaException("Local de origem ou destino invalido");
     }
     pedidos.emplace_back(proximoIdPedido++, origem, destino, peso);
 }
 
 void SistemaLogistica::editarPedido(int id, int novaOrigem, int novoDestino, float novoPeso) {
     if (id < 1 || id >= proximoIdPedido) {
-        throw LogisticaException("ID de pedido inválido");
+        throw LogisticaException("ID de pedido invalido");
     }
     for (auto& p : pedidos) {
         if (p.getId() == id) {
             if (p.isEntregue()) {
-                throw LogisticaException("Não é possível editar pedido já entregue");
+                throw LogisticaException("Nao e possivel editar pedido ja entregue");
             }
             if (novaOrigem < 0 || static_cast<size_t>(novaOrigem) >= locais.size() || 
                 novoDestino < 0 || static_cast<size_t>(novoDestino) >= locais.size()) {
-                throw LogisticaException("Local de origem ou destino inválido");
+                throw LogisticaException("Local de origem ou destino invalido");
             }
             p = Pedido(id, novaOrigem, novoDestino, novoPeso);
             return;
         }
     }
-    throw LogisticaException("Pedido não encontrado");
+    throw LogisticaException("Pedido nao encontrado");
 }
 
 void SistemaLogistica::removerPedido(int id) {
     if (id < 1 || id >= proximoIdPedido) {
-        throw LogisticaException("ID de pedido inválido");
+        throw LogisticaException("ID de pedido invalido");
     }
     for (auto it = pedidos.begin(); it != pedidos.end(); ++it) {
         if (it->getId() == id) {
             if (it->isEntregue()) {
-                throw LogisticaException("Não é possível remover pedido já entregue");
+                throw LogisticaException("Nao e possivel remover pedido ja entregue");
             }
             pedidos.erase(it);
             return;
         }
     }
-    throw LogisticaException("Pedido não encontrado");
+    throw LogisticaException("Pedido nao encontrado");
 }
 
 void SistemaLogistica::listarPedidos() const {
@@ -159,7 +159,7 @@ void SistemaLogistica::calcularRotaEntrega(int idPedido) {
         }
     }
     if (!pedido) {
-        throw LogisticaException("Pedido não encontrado, já entregue ou já em rota.");
+        throw LogisticaException("Pedido nao encontrado, ja entregue ou ja em rota.");
     }
 
     int idVeiculo = -1;
@@ -174,21 +174,21 @@ void SistemaLogistica::calcularRotaEntrega(int idPedido) {
         }
     }
     if (idVeiculo == -1) {
-        throw LogisticaException("Nenhum veículo disponível");
+        throw LogisticaException("Nenhum veiculo disponivel");
     }
 
     float distOrigemDestino = calcularDistancia(pedido->getOrigem(), pedido->getDestino());
     float distTotal = menorDistancia + distOrigemDestino;
     veiculos[idVeiculo].setDisponivel(false);
 
-    // Associa pedido ao veículo
+    // Associa pedido ao veiculo
     pedidosEmRota[pedido->getId()] = idVeiculo;
 
     std::cout << "\n=== ROTA CALCULADA ===\n";
     std::cout << "Pedido ID: " << pedido->getId() << "\n";
-    std::cout << "Veículo designado: " << veiculos[idVeiculo].getPlaca() << "\n";
-    std::cout << "Distância total: " << distTotal << " unidades\n";
-    std::cout << "O pedido está agora em rota. Confirme ou cancele a entrega pelo menu de entregas em rota.\n";
+    std::cout << "Veiculo designado: " << veiculos[idVeiculo].getPlaca() << "\n";
+    std::cout << "Distancia total: " << distTotal << " unidades\n";
+    std::cout << "O pedido esta agora em rota. Confirme ou cancele a entrega pelo menu de entregas em rota.\n";
 }
 
 void SistemaLogistica::listarEntregasEmRota() {
@@ -200,7 +200,7 @@ void SistemaLogistica::listarEntregasEmRota() {
         auto it = std::find_if(pedidos.begin(), pedidos.end(), [idPedido](const Pedido& p){ return p.getId() == idPedido; });
         if (it != pedidos.end() && !it->isEntregue()) {
             it->exibir();
-            std::cout << " | Veículo: " << veiculos[idVeiculo].getPlaca() << "\n";
+            std::cout << " | Veiculo: " << veiculos[idVeiculo].getPlaca() << "\n";
             encontrou = true;
         }
     }
@@ -216,7 +216,7 @@ void SistemaLogistica::listarEntregasEmRota() {
 
     auto it = pedidosEmRota.find(idPedido);
     if (it == pedidosEmRota.end()) {
-        std::cout << "Pedido não está em rota.\n";
+        std::cout << "Pedido nao esta em rota.\n";
         return;
     }
     int idVeiculo = it->second;
@@ -227,7 +227,7 @@ void SistemaLogistica::listarEntregasEmRota() {
 
     auto pedidoIt = std::find_if(pedidos.begin(), pedidos.end(), [idPedido](const Pedido& p){ return p.getId() == idPedido; });
     if (pedidoIt == pedidos.end()) {
-        std::cout << "Pedido não encontrado.\n";
+        std::cout << "Pedido nao encontrado.\n";
         return;
     }
     Pedido& pedido = *pedidoIt;
@@ -305,7 +305,7 @@ void SistemaLogistica::restaurarDados() {
 float SistemaLogistica::calcularDistancia(int idLocal1, int idLocal2) const {
     if (idLocal1 < 0 || static_cast<size_t>(idLocal1) >= locais.size() ||
         idLocal2 < 0 || static_cast<size_t>(idLocal2) >= locais.size()) {
-        throw LogisticaException("Local inválido para cálculo de distância");
+        throw LogisticaException("Local invalido para cálculo de distancia");
     }
 
     float dx = locais[idLocal1].getX() - locais[idLocal2].getX();
