@@ -28,13 +28,9 @@ void testPersistenciaVeiculo() {
     assert(numVeiculos == 1);
     arq.close();
     
-    // Limpeza
-    remove("locais.bin");
-    remove("veiculos.bin");
-    remove("pedidos.bin");
-    remove("id_pedido.bin");
     
-    std::cout << "Testes de persistencia de Veículos passaram!\n";
+    
+    std::cout << "Testes de persistencia de Veiculos passaram!\n";
 }
 
 int main() {

@@ -36,11 +36,7 @@ void testPersistenciaPedido() {
     assert(proximoId == 2);
     arqId.close();
     
-    // Limpeza
-    remove("locais.bin");
-    remove("veiculos.bin");
-    remove("pedidos.bin");
-    remove("id_pedido.bin");
+    
     
     std::cout << "Testes de persistencia de Pedidos passaram!\n";
 }

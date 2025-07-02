@@ -29,11 +29,7 @@ void testPersistenciaLocal() {
     assert(numLocais == 2);
     arq.close();
     
-    // Limpeza
-    remove("locais.bin");
-    remove("veiculos.bin");
-    remove("pedidos.bin");
-    remove("id_pedido.bin");
+    
     
     std::cout << "Testes de persistencia de Locais passaram!\n";
 }
