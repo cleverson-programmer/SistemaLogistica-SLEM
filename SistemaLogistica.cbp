@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+  <FileVersion major="1" minor="6"/>
+  <Project>
+    <Option title="SistemaLogistica"/>
+    <Option pch_mode="2"/>
+    <Option compiler="gcc"/>
+    <Build>
+      <Target title="Debug">
+        <Option output="bin/Debug/SistemaLogistica" prefix_auto="1" extension_auto="1"/>
+        <Option object_output="obj/Debug/"/>
+        <Option type="1"/>
+        <Option compiler="gcc"/>
+        <Compiler>
+          <Add option="-std=c++11"/>
+          <Add option="-Wall"/>
+          <Add directory="include"/>
+        </Compiler>
+      </Target>
+      
+      <Target title="Release">
+        <Option output="bin/Release/SistemaLogistica" prefix_auto="1" extension_auto="1"/>
+        <Option object_output="obj/Release/"/>
+        <Option type="1"/>
+        <Option compiler="gcc"/>
+        <Compiler>
+          <Add option="-std=c++11"/>
+          <Add option="-Wall"/>
+          <Add directory="include"/>
+        </Compiler>
+      </Target>
+      
+      <Target title="Tests">
+        <Option output="bin/Tests/test_runner" prefix_auto="1" extension_auto="1"/>
+        <Option object_output="obj/Tests/"/>
+        <Option type="1"/>
+        <Option compiler="gcc"/>
+        <Compiler>
+          <Add option="-std=c++11"/>
+          <Add option="-Wall"/>
+          <Add directory="include"/>
+          <Add directory="test"/>
+        </Compiler>
+        
+        <!-- Arquivos de teste -->
+        <Unit filename="test/test_runner.cpp"/>
+        
+        <!-- Arquivos do projeto necessários para testes -->
+        <Unit filename="src/Local.cpp"/>
+        <Unit filename="src/Veiculo.cpp"/>
+        <Unit filename="src/Pedido.cpp"/>
+        <Unit filename="src/LogisticaException.cpp"/>
+        <Unit filename="src/SistemaLogistica.cpp"/>
+        <Unit filename="src/Menus.cpp"/>
+        
+        <!-- Exclui explicitamente o main.cpp -->
+        <Unit filename="src/main.cpp">
+          <Option compile="0"/>
+          <Option link="0"/>
+        </Unit>
+      </Target>
+    </Build>
+
+    <!-- Arquivos fonte (compartilhados) -->
+    <Unit filename="src/Local.cpp"/>
+    <Unit filename="src/Veiculo.cpp"/>
+    <Unit filename="src/Pedido.cpp"/>
+    <Unit filename="src/LogisticaException.cpp"/>
+    <Unit filename="src/SistemaLogistica.cpp"/>
+    <Unit filename="src/Menus.cpp"/>
+    <Unit filename="src/main.cpp"/>
+
+    <!-- Arquivos de cabeçalho -->
+    <Unit filename="include/Local.h"/>
+    <Unit filename="include/Veiculo.h"/>
+    <Unit filename="include/Pedido.h"/>
+    <Unit filename="include/LogisticaException.h"/>
+    <Unit filename="include/SistemaLogistica.h"/>
+    <Unit filename="include/Menus.h"/>
+
+    <Extensions>
+      <code_completion/>
+      <debugger/>
+    </Extensions>
+  </Project>
+</CodeBlocks_project_file>
+
+
+<!-- PARA RODAR PROJETO NO CODEBLOCKS -->

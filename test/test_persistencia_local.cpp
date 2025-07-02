@@ -6,8 +6,8 @@
 void testPersistenciaLocal() {
     // Preparação
     SistemaLogistica sistema;
-    sistema.adicionarLocal(Local("Depósito A", 10.5f, 20.3f));
-    sistema.adicionarLocal(Local("Depósito B", 15.0f, 25.0f));
+    sistema.adicionarLocal(Local("Deposito A", 10.5f, 20.3f));
+    sistema.adicionarLocal(Local("Deposito B", 15.0f, 25.0f));
     
     // Teste 1: Backup de locais
     sistema.fazerBackup();
@@ -35,7 +35,7 @@ void testPersistenciaLocal() {
     remove("pedidos.bin");
     remove("id_pedido.bin");
     
-    std::cout << "Testes de persistência de Locais passaram!\n";
+    std::cout << "Testes de persistencia de Locais passaram!\n";
 }
 
 int main() {

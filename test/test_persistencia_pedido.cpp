@@ -42,7 +42,7 @@ void testPersistenciaPedido() {
     remove("pedidos.bin");
     remove("id_pedido.bin");
     
-    std::cout << "Testes de persistência de Pedidos passaram!\n";
+    std::cout << "Testes de persistencia de Pedidos passaram!\n";
 }
 
 int main() {

@@ -2,19 +2,19 @@
 #include <iostream>
 
 void exibirMenu() {
-    std::cout << "\n=== SISTEMA DE LOGÍSTICA ===\n";
+    std::cout << "\n=== SISTEMA DE LOGISTICA ===\n";
     std::cout << "1. Cadastro de Locais\n";
-    std::cout << "2. Cadastro de Veículos\n";
+    std::cout << "2. Cadastro de Veiculos\n";
     std::cout << "3. Cadastro de Pedidos\n";
     std::cout << "4. Listar Locais\n";
-    std::cout << "5. Listar Veículos\n";
+    std::cout << "5. Listar Veiculos\n";
     std::cout << "6. Listar Pedidos\n";
     std::cout << "7. Calcular Rota de Entrega\n";
     std::cout << "8. Fazer Backup de Dados\n";
     std::cout << "9. Restaurar Dados\n";
     std::cout << "10. Gerenciar entregas em rota\n";
     std::cout << "0. Sair\n";
-    std::cout << "Escolha uma opção: ";
+    std::cout << "Escolha uma opcao: ";
 }
 
 void menuLocais(SistemaLogistica& sistema) {
@@ -26,7 +26,7 @@ void menuLocais(SistemaLogistica& sistema) {
         std::cout << "3. Remover Local\n";
         std::cout << "4. Listar Locais\n";
         std::cout << "0. Voltar\n";
-        std::cout << "Escolha uma opção: ";
+        std::cout << "Escolha uma opcao: ";
         std::cin >> opcao;
         
         try {
@@ -82,13 +82,13 @@ void menuLocais(SistemaLogistica& sistema) {
 void menuVeiculos(SistemaLogistica& sistema) {
     int opcao;
     do {
-        std::cout << "\n=== CADASTRO DE VEÍCULOS ===\n";
-        std::cout << "1. Adicionar Veículo\n";
-        std::cout << "2. Editar Veículo\n";
-        std::cout << "3. Remover Veículo\n";
-        std::cout << "4. Listar Veículos\n";
+        std::cout << "\n=== CADASTRO DE VEICULOS ===\n";
+        std::cout << "1. Adicionar Veiculo\n";
+        std::cout << "2. Editar Veiculo\n";
+        std::cout << "3. Remover Veiculo\n";
+        std::cout << "4. Listar Veiculos\n";
         std::cout << "0. Voltar\n";
-        std::cout << "Escolha uma opção: ";
+        std::cout << "Escolha uma opcao: ";
         std::cin >> opcao;
         
         try {
@@ -116,7 +116,7 @@ void menuVeiculos(SistemaLogistica& sistema) {
                     char placa[20], modelo[50];
                     
                     sistema.listarVeiculos();
-                    std::cout << "ID do veículo a editar: ";
+                    std::cout << "ID do veiculo a editar: ";
                     std::cin >> id;
                     
                     std::cout << "Nova placa: ";
@@ -136,7 +136,7 @@ void menuVeiculos(SistemaLogistica& sistema) {
                 case 3: {
                     int id;
                     sistema.listarVeiculos();
-                    std::cout << "ID do veículo a remover: ";
+                    std::cout << "ID do veiculo a remover: ";
                     std::cin >> id;
                     sistema.removerVeiculo(id);
                     break;
@@ -160,7 +160,7 @@ void menuPedidos(SistemaLogistica& sistema) {
         std::cout << "3. Remover Pedido\n";
         std::cout << "4. Listar Pedidos\n";
         std::cout << "0. Voltar\n";
-        std::cout << "Escolha uma opção: ";
+        std::cout << "Escolha uma opcao: ";
         std::cin >> opcao;
         
         try {

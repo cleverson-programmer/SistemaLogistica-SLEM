@@ -34,7 +34,7 @@ void testPersistenciaVeiculo() {
     remove("pedidos.bin");
     remove("id_pedido.bin");
     
-    std::cout << "Testes de persistência de Veículos passaram!\n";
+    std::cout << "Testes de persistencia de Veículos passaram!\n";
 }
 
 int main() {
