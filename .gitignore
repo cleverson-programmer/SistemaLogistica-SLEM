@@ -1,7 +1,7 @@
 /bin
 /obj
 .layout
-/.vscode
+.vscode/
 ./build
 /.vs
 .exe
